@@ -1,52 +1,72 @@
 #include <iostream>
-#include <string>
+#include <iomanip> 
 using namespace std;
 
 int main() {
-	cout << "~ Menerapkan konsep dan membuat algoritma untuk menyelesaikan kasus ~" << endl;
-	cout << "======================================================================" << endl;
+	cout << "~ MENERAPKAN KONSEP DAN MEMBUAT ALGORITMA UNTUK MENYELESAIKAN KASUS ~" << endl;
+	cout << "---------------------------------------------------------------------" << endl;
 	cout << "Nama          : Sella Andira Bintang Wulandari" << endl;
   	cout << "NIM           : 5520122013" << endl;
    	cout << "Program Studi : Informatika" << endl;
-   	cout << "======================================================================" << endl;
+   	cout << "---------------------------------------------------------------------" << endl;
    	
-    string nama, prodi;
-    int nim, sks;
-    double biaya_per_sks, biaya_total, biaya_admin, rata_rata, jumlah;
-    int nilai[5];
+    // harga perporsi dan perbotol
+    int harga_bakso = 13000;
+    int harga_mie_ayam = 12000;
+    int harga_es_teh = 5000;
+    int harga_es_jeruk = 6000;
 
-    // Input data mahasiswa
-    cout << "Masukkan Nama Mahasiwa: ";
-    getline(cin, nama);
+    // jumlah porsi dan botol yang dipesan
+    int jumlah_bakso = 0;
+    int jumlah_mie_ayam = 0;
+    int jumlah_es_teh = 0;
+    int jumlah_es_jeruk = 0;
 
-    cout << "Masukkan NIM: ";
-    cin >> nim;
+    // mengambil input jumlah porsi dan botol yang dipesan
+    cout << "Selamat datang di warung makan kami" << endl;
+    cout << "Menu makanan dan minuman yang tersedia:" << endl;
+    cout << "1. Bakso        Rp " << harga_bakso << "/porsi" << endl;
+    cout << "2. Mie Ayam     Rp " << harga_mie_ayam << "/porsi" << endl;
+    cout << "3. Es Teh       Rp " << harga_es_teh << "/botol" << endl;
+    cout << "4. Es Jeruk     Rp " << harga_es_jeruk << "/botol" << endl;
+    cout << "Pesan makanan dan minuman yang anda inginkan" << endl;
 
-    cout << "Masukkan Prodi: ";
-    cin >> prodi;
+    cout << "Jumlah porsi Bakso: ";
+    cin >> jumlah_bakso;
 
-    // Input jumlah SKS dan biaya per SKS
-    cout << "Masukkan jumlah SKS yang diambil: ";
-    cin >> sks;
+    cout << "Jumlah porsi Mie Ayam: ";
+    cin >> jumlah_mie_ayam;
 
-    cout << "Masukkan biaya per SKS: ";
-    cin >> biaya_per_sks;
+    cout << "Jumlah botol Es Teh: ";
+    cin >> jumlah_es_teh;
 
-    // Hitung biaya kuliah dan biaya administrasi
-    biaya_total = sks * biaya_per_sks;
-    biaya_admin = biaya_total * 0.1;
-    jumlah      = biaya_total + biaya_admin;
- 
-    // Output data mahasiswa, biaya total dan biaya administrasi
-    cout << "----------------------------------------------------------------------" << endl;
-    cout << "Nama                      : " << nama << endl;
-    cout << "NIM                       : " << nim << endl;
-    cout << "Program Studi             : " << prodi << endl;
-    cout << "Jumlah SKS                : " << sks << endl;
-    cout << "Biaya kuliah              : " << biaya_total << endl;
-    cout << "Biaya administrasi        : " << biaya_admin << endl;
-    cout << "Jumlah yang harus dibayar : " << jumlah << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "Jumlah botol Es Jeruk: ";
+    cin >> jumlah_es_jeruk;
+
+    // menghitung total harga pesanan
+    int total_harga = jumlah_bakso * harga_bakso + jumlah_mie_ayam * harga_mie_ayam + jumlah_es_teh * harga_es_teh + jumlah_es_jeruk * harga_es_jeruk;
+
+    // menampilkan total harga pesanan
+    cout << "Total Harga Pesanan: Rp " << total_harga << endl;
+
+    // mengambil input jumlah uang yang dibayarkan oleh pelanggan
+    double jumlah_uang = 0.0;
+    do {
+        cout << "Jumlah uang yang dibayarkan: Rp ";
+        cin >> jumlah_uang;
+
+        if (jumlah_uang < total_harga) {
+            cout << "Jumlah uang yang dibayarkan tidak cukup" << endl;
+        }
+    } while (jumlah_uang < total_harga);
+
+    // menghitung kembalian
+    double kembalian = jumlah_uang - total_harga;
+
+    // menampilkan kembalian dengan presisi 2 angka di belakang koma
+    cout << "Kembalian: Rp " << fixed << setprecision(2) << kembalian << endl;
+
+    cout << "Terima kasih telah memesan di warung makan kami" << endl;
 
     return 0;
 }
